@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+int prob[5];
+void inintialize()
+{
+    for (int i = 0; i < 5; i++)
+    {
+        prob[i] = NULL;
+    }
+}
+void insert(int value)
+{
+    int i;
+    int key = value % 5;
+    for (i = 0; i < 5; i++)
+    {
+        int key1 = (key + i) % 5;
+        if (prob[key1] == NULL)
+        {
+            prob[key1] = value;
+            break;
+        }
+        else
+            continue;
+    }
+}
+void display()
+{
+    for (int i = 0; i < 5; i++)
+    {
+        if (prob[i] != NULL)
+            printf("  |%d|  ", prob[i]);
+        else
+            printf("  |-|  ");
+    }
+}
+void search(int value)
+{
+    int flag = 0, key = value % 5;
+    for (int i = 0; i < 5; i++)
+    {
+        int key1 = (key + i) % 5;
+        if (prob[key1] == value)
+            flag = 1;
+    }
+    if (flag)
+        printf("\nElement found");
+    else
+        printf("\nElement does not found");
+}
+int main()
+{
+    insert(1);
+    insert(2);
+    insert(12);
+    insert(22);
+    insert(32);
+    insert(42);
+    display();
+    search(1);
+    search(42);
+}
