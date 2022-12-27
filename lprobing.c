@@ -50,13 +50,23 @@ void search(int value)
 }
 int main()
 {
-    insert(1);
-    insert(2);
-    insert(12);
-    insert(22);
-    insert(32);
-    insert(42);
-    display();
-    search(1);
-    search(42);
+     int ch,val;
+    while(1){
+        printf("\n1-Insert\n2-Display\n3-Search\n4-Exit\nEnter your choice:");
+        scanf("%d",&ch);
+        switch(ch){
+            case 1:printf("\n-----Enter element:-----");
+                    scanf("%d",&val);
+                    insert(val);
+                    break;
+            case 2:printf("\n-----Elemnts in hashmap are:------\n");
+                    display();
+                    break;
+            case 3:printf("\nElement to search:");
+                    scanf("%d",&val);
+                    search(val);
+                    break;
+            default:exit(0);
+        }
+    }
 }
