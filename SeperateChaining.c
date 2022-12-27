@@ -73,7 +73,7 @@ int main()
     printf("Enter size of the table:");
     scanf("%d",&n);
     int prob[n];
-    initialize(prob[])
+    initialize(prob[n])
     while(1){
         printf("\n1-Insert\n2-Display\n3-Search\n4-Exit\nEnter your choice:");
         scanf("%d",&ch);
