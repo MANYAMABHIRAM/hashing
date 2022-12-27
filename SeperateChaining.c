@@ -6,16 +6,13 @@ struct node
     struct node *next;
 } *head, *tail, *temp, *temp1, *temp2, *newnode;
 typedef struct node node;
-node *chain[5];
-void initialize()
+void initialize(int prob[])
 {
     for (int i = 0; i < 5; i++)
         chain[i] = NULL;
 }
-void insert(int value)
+void insert(int value,int n,int prob[])
 {
-    temp = (node *)malloc(sizeof(node));
-    newnode = (node *)malloc(sizeof(node));
     newnode->data = value;
     newnode->next = NULL;
     int key = value % 5;
@@ -31,7 +28,7 @@ void insert(int value)
         temp->next = newnode;
     }
 }
-void print()
+void display(int prob[])
 {
     temp = (node *)malloc(sizeof(node));
     for (int i = 0; i < 5; i++)
@@ -46,7 +43,7 @@ void print()
         printf("NULL\n");
     }
 }
-void search(int value)
+void search(int value,int n,int prob[])
 {
     int key = value % 5;
 
@@ -72,15 +69,27 @@ void search(int value)
 }
 int main()
 {
-    initialize();
-    insert(5);
-    insert(1);
-    insert(2);
-    insert(3);
-    insert(10);
-    insert(11);
-    print();
-    search(5);
-    search(15);
-    search(4);
+    int n,val,ch;
+    printf("Enter size of the table:");
+    scanf("%d",&n);
+    int prob[n];
+    initialize(prob[])
+    while(1){
+        printf("\n1-Insert\n2-Display\n3-Search\n4-Exit\nEnter your choice:");
+        scanf("%d",&ch);
+        switch(ch){
+            case 1:printf("\nEnter element:");
+                    scanf("%d",&val);
+                    insert(val,n,prob);
+                    break;
+            case 2:printf("\nElemnts in hashmap are:\n");
+                    display(n,prob);
+                    break;
+            case 3:printf("\nElement to search:");
+                    scanf("%d",&val);
+                    search(val,n,prob);
+                    break;
+            default:exit(0);
+        }
+    }
 }
