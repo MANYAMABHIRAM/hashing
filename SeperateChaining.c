@@ -3,7 +3,7 @@
 struct node
 {
     int data;
-    struct hash *next;
+    struct node *next;
 } *head, *tail, *temp, *temp1, *temp2, *newnode;
 typedef struct node node;
 node *chain[5];
