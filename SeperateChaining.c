@@ -6,32 +6,35 @@ struct node
     struct node *next;
 } *head, *tail, *temp, *temp1, *temp2, *newnode;
 typedef struct node node;
-void initialize(int prob[])
+node* chain[];
+void initialize(int n)
 {
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < n; i++)
         chain[i] = NULL;
 }
-void insert(int value,int n,int prob[])
+void insert(int value,int n)
 {
+    temp=(node*)malloc(sizeof(node));
+    newnode=(node*)malloc(sizeof(node));
     newnode->data = value;
     newnode->next = NULL;
-    int key = value % 5;
+    int key = value % n;
+    temp = chain[key];
     if (chain[key] == NULL)
         chain[key] = newnode;
     else
     {
-        temp = chain[key];
-        while (temp->next != NULL)
+        while (temp->next)
         {
             temp = temp->next;
         }
         temp->next = newnode;
     }
 }
-void display(int prob[])
+void display(int n)
 {
     temp = (node *)malloc(sizeof(node));
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < n; i++)
     {
         temp = chain[i];
         printf("chain[%d]-->", i);
@@ -43,9 +46,9 @@ void display(int prob[])
         printf("NULL\n");
     }
 }
-void search(int value,int n,int prob[])
+void search(int value,int n)
 {
-    int key = value % 5;
+    int key = value % n;
 
     if (chain[key] == NULL)
     {
@@ -72,22 +75,21 @@ int main()
     int n,val,ch;
     printf("Enter size of the table:");
     scanf("%d",&n);
-    int prob[n];
-    initialize(prob[n])
+    initialize(n);
     while(1){
-        printf("\n1-Insert\n2-Display\n3-Search\n4-Exit\nEnter your choice:");
+        printf("\n1-Insert\n2-Display\n3-Search\n4-Deletion\n5-Exit\nEnter your choice:");
         scanf("%d",&ch);
         switch(ch){
             case 1:printf("\nEnter element:");
                     scanf("%d",&val);
-                    insert(val,n,prob);
+                    insert(val,n);
                     break;
             case 2:printf("\nElemnts in hashmap are:\n");
-                    display(n,prob);
+                    display(n);
                     break;
             case 3:printf("\nElement to search:");
                     scanf("%d",&val);
-                    search(val,n,prob);
+                    search(val,n);
                     break;
             default:exit(0);
         }
