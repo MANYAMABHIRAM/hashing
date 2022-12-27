@@ -55,11 +55,11 @@ int main()
         printf("\n1-Insert\n2-Display\n3-Search\n4-Exit\nEnter your choice:");
         scanf("%d",&ch);
         switch(ch){
-            case 1:printf("\n-----Enter element:-----");
+            case 1:printf("\nEnter element:");
                     scanf("%d",&val);
                     insert(val);
                     break;
-            case 2:printf("\n-----Elemnts in hashmap are:------\n");
+            case 2:printf("\nElemnts in hashmap are:\n");
                     display();
                     break;
             case 3:printf("\nElement to search:");
